@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Nadi Pariksha</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+        <link href="../styles/Nadi_Pariksha.css" rel="stylesheet" />
+        <link href="../styles/Panchkarma.css" rel="stylesheet" />
+        <style>
+            /* NAVBAR - FIXED */
+            .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1rem 0;
+                background: #fff;
+                border-bottom: 1px solid #eee;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .logo img {
+                width: 70px;
+                animation: spin 20s linear infinite;
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .menu {
+                display: flex;
+                gap: 2rem;
+                list-style: none;
+            }
+
+            .menu a {
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                font-size: 1rem;
+                position: relative;
+                transition: color 0.3s;
+            }
+
+            .menu a:hover,
+            .menu a.active {
+                color: #e74c3c;
+            }
+
+            .menu a.active::after {
+                content: "";
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: #e74c3c;
+            }
+
+            .right {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .right a {
+                color: #333;
+                font-size: 1.2rem;
+                transition: color 0.3s;
+            }
+
+            .right a:hover {
+                color: #e74c3c;
+            }
+
+            .cta {
+                padding: 0.6rem 1.5rem;
+                border-radius: 25px;
+                border: none;
+                background: #000;
+                color: #fff;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+
+            .cta:hover {
+                background: #333;
+                transform: translateY(-2px);
+            }
+
+            /* DROPDOWN - FIXED */
+            .dropdown {
+                position: relative;
+            }
+
+            .dropdown-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: #fff;
+                min-width: 220px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                border-radius: 8px;
+                z-index: 1001;
+            }
+
+            .dropdown-menu.show {
+                display: block;
+            }
+
+            .dropdown-menu a {
+                display: block;
+                padding: 0.8rem 1.2rem;
+                color: #333;
+                font-weight: 500;
+            }
+
+            .dropdown-menu a:hover {
+                background: #f8f9fa;
+            }
+
+            .arrow {
+                font-size: 0.8rem;
+                transition: transform 0.3s;
+                margin-left: 0.3rem;
+            }
+
+            .arrow.rotate {
+                transform: rotate(180deg);
+            }
+
+            /* MOBILE MENU */
+            .menu-toggle {
+                display: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: #333;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                object-fit: cover;
+                display: block;
+            }
+
+            @media (max-width: 768px) {
+                .menu-toggle {
+                    display: block;
+                }
+
+                .menu {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    width: 100%;
+                    background: #fff;
+                    flex-direction: column;
+                    padding: 1rem;
+                    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                }
+
+                .menu.active {
+                    display: flex;
+                }
+
+                .navbar {
+                    padding: 1rem 5%;
+                }
+
+                .right {
+                    gap: 0.5rem;
+                }
+
+                .services .row {
+                    --bs-gutter-x: 1rem;
+                }
+            }
+
+            @media (max-width: 576px) {
+                .navbar {
+                    padding: 0.8rem 4%;
+                }
+
+                .logo img {
+                    width: 100px;
+                }
+
+                .services {
+                    padding: 60px 4%;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- NAVBAR -->
+        <header class="navbar">
+            <div class="logo">
+                <img src="/images/logo img.avif" alt="Ayurveda Ayatanam Logo" />
+            </div>
+
+            <div class="menu-toggle" id="menuToggle">☰</div>
+
+            <nav class="menu" id="navMenu">
+                <a href="../../index.html">Home</a>
+            <a href="../Ayurvedaayatanam/Daivapipashaya Chikitsa/Diva.html">Daivavyapashraya Chikitsa</a>
+            <a href="../html/Panchkarma.html">Panchakarma</a>
+            <a href="../html/jyotisha-diagnosis.html">Hora Ayurveda</a>
+            <a href="../Ayurvedaayatanam/Jalookavacharana/Jaloo.html">Jaloukavacharana</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">
+                    About Us
+                    <span class="arrow" id="aboutArrow">▼</span>
+                </a>
+                <div class="dropdown-menu" id="aboutMenu">
+                    <a href="../../Team D/about-dr-tejas-bharadwaj.html">Dr. Tejas Bharadwaj</a>
+                    <a href="../../Team D/about-ayurveda-ayatanam.html">Ayurveda Ayatanam</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="right">
+                <a href="https://www.facebook.com/" target="_blank">
+                    <i class="bi bi-facebook"></i>
+                </a>
+
+                <a href="https://www.instagram.com/" target="_blank">
+                    <i class="bi bi-instagram"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/" target="_blank">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+
+                <a href="https://twitter.com/" target="_blank">
+                    <i class="bi bi-twitter-x"></i>
+                </a>
+                <button class="cta">Consult Now</button>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="nadi-hero">
+            <div class="nadi-hero-wrapper">
+                <div class="nadi-hero-content" data-animate>
+                    <h1>Nadi Pariksha</h1>
+                    <p>
+                        Nadi Pariksha is the ancient Ayurvedic art of pulse diagnosis, where the subtle vibrations of
+                        life are felt through the pulse. It reveals the balance of doshas, the state of organs, mental
+                        tendencies, and the deeper connection between body and consciousness.
+                    </p>
+
+                    <p>
+                        Unlike modern diagnostics, Nadi Pariksha does not rely on machines. It relies on the trained
+                        sensitivity of the Vaidya, who listens to the silent language of your pulse.
+                    </p>
+
+                    <div class="nadi-hero-quote">
+                        “The pulse carries the wisdom of the body and the memory of the soul.”
+                    </div>
+                </div>
+
+                <div class="nadi-hero-image" data-animate>
+                    <img src="../Images/nadi1.jpg" alt="Nadi Pariksha Examination" />
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="nadi-section" data-animate>
+            <h2>Why Nadi Pariksha is Unique</h2>
+            <p>
+                Nadi Pariksha allows the physician to understand disease at its root. Long before symptoms appear,
+                subtle imbalances can be detected. This makes it one of the most powerful preventive diagnostic tools
+                described in classical Ayurvedic texts.
+            </p>
+
+            <p>
+                Through Nadi Pariksha, the physician determines not only what treatment is needed, but also the most
+                suitable diet, daily routine, seasonal care, and Panchakarma therapies specific to your constitution.
+            </p>
+        </section>
+
+        <!-- DOSHA -->
+        <section class="dosha-section">
+            <h2 class="dosha-title" data-animate>The Three Nadis (Doshas)</h2>
+
+            <div class="dosha-cards" data-animate>
+                <div class="dosha-card">
+                    <h3>Vata Nadi</h3>
+                    <p>
+                        Governs movement, nerve impulses, respiration, and circulation. Imbalance may manifest as
+                        anxiety, dryness, tremors, pain, or irregular digestion.
+                    </p>
+                </div>
+
+                <div class="dosha-card">
+                    <h3>Pitta Nadi</h3>
+                    <p>
+                        Controls digestion, metabolism, vision, and intelligence. Excess Pitta may lead to inflammation,
+                        acidity, anger, skin diseases, and liver disorders.
+                    </p>
+                </div>
+
+                <div class="dosha-card">
+                    <h3>Kapha Nadi</h3>
+                    <p>
+                        Represents stability, immunity, strength, and nourishment. Kapha imbalance may cause heaviness,
+                        lethargy, weight gain, and congestion.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="nadi-process">
+            <h2>The Nadi Pariksha Procedure</h2>
+
+            <div class="process-steps" data-animate>
+                <div class="step">
+                    <span>01</span>
+                    <p>
+                        The physician gently places three fingers on the radial artery of the wrist. Each finger
+                        corresponds to one of the three doshas: Vata, Pitta, and Kapha. This placement allows the Vaidya
+                        to sense subtle vibrations of the pulse. The positioning is done with utmost care to ensure
+                        accurate reading of energy flow.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <span>02</span>
+                    <p>
+                        The physician observes various qualities of the pulse, such as speed, rhythm, depth, and
+                        tension. Temperature, strength, and subtle fluctuations are also assessed to understand
+                        imbalances. Mental and emotional tendencies can be inferred from subtle pulse variations. This
+                        holistic observation helps in identifying early signs of disorders before symptoms appear.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <span>03</span>
+                    <p>
+                        Based on the pulse diagnosis, a personalized healing plan is formulated. This plan may include
+                        herbal medicines, Panchakarma therapies, diet, and lifestyle guidance. The physician ensures
+                        that treatments are tailored to the individual’s doshic constitution. Continuous follow-up and
+                        pulse monitoring help track progress and adjust the therapy if needed.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="nadi-section" style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap">
+            <div style="flex: 1; min-width: 300px" data-animate>
+                <h2>Benefits of Nadi Pariksha</h2>
+
+                <p>
+                    Nadi Pariksha is not merely a diagnostic technique, but a gateway to understanding the root cause of
+                    imbalance within the body. It allows early detection of disorders before they manifest physically.
+                </p>
+
+                <p>
+                    Through precise pulse reading, the physician can determine the functioning of organs, strength of
+                    digestion, mental tendencies, emotional disturbances, and overall vitality of the individual.
+                </p>
+
+                <p>
+                    This enables highly personalized treatments that restore harmony at physical, mental, and spiritual
+                    levels.
+                </p>
+            </div>
+
+            <div style="flex: 1; min-width: 300px" data-animate>
+                <img
+                    src="../Images/nadi2.jpg"
+                    alt="Benefits of Nadi Pariksha"
+                    style="width: 100%; border-radius: 20px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3)"
+                />
+            </div>
+        </section>
+
+        <section
+            class="nadi-process"
+            style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap; background: #fef9f2"
+        >
+            <div style="flex: 1; min-width: 300px">
+                <img
+                    src="../Images/nadi3.jpg"
+                    alt="Classical Ayurvedic References"
+                    style="width: 100%; border-radius: 20px; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25)"
+                    data-animate
+                />
+            </div>
+
+            <div style="flex: 1; min-width: 300px" data-animate>
+                <h2>Classical References of Nadi Pariksha</h2>
+
+                <div class="process-steps" data-animate>
+                    <div class="step">
+                        <span>📖</span>
+                        <p>
+                            Nadi Pariksha is mentioned in classical Ayurvedic texts such as Sharangadhara Samhita and
+                            Bhavaprakasha Samhita.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <span>📜</span>
+                        <p>
+                            Ancient sages described pulse diagnosis as a means to perceive doshic imbalance, organ
+                            strength, and life force (Prana).
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <span>🕉</span>
+                        <p>
+                            The technique was traditionally passed from guru to disciple and refined through years of
+                            practice.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📅 5. Who Should Opt for Nadi Pariksha? -->
+        <section class="nadi-section" style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap">
+            <div style="flex: 1; min-width: 300px" data-animate>
+                <h2>Who Should Opt for Nadi Pariksha?</h2>
+
+                <p>
+                    Nadi Pariksha is suitable for individuals of all ages. It is especially beneficial for those seeking
+                    natural, holistic, and preventive healthcare.
+                </p>
+
+                <p>
+                    People suffering from chronic diseases, unexplained symptoms, stress-related disorders, or those
+                    planning Panchakarma should undergo Nadi Pariksha.
+                </p>
+
+                <p>
+                    Even healthy individuals can benefit by understanding their constitution and maintaining long-term
+                    wellness.
+                </p>
+            </div>
+
+            <div style="flex: 1; min-width: 300px" data-animate>
+                <img
+                    src="../Images/nadi4.jpg"
+                    alt="Who Should Opt for Nadi Pariksha"
+                    style="
+                        width: 100%;
+                        border-radius: 50%;
+                        border: 4px solid #b8893c;
+                        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+                    "
+                />
+            </div>
+        </section>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/ScrollTrigger.min.js"></script>
+
+        <script src="../scripts/Panchkarma.js"></script>
+        <script>
+            // MOBILE MENU TOGGLE
+            const menuToggle = document.getElementById("menuToggle");
+            const navMenu = document.getElementById("navMenu");
+
+            menuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+            });
+
+            // DROPDOWN TOGGLE
+            const dropdownToggle = document.querySelector(".dropdown-toggle");
+            const dropdownMenu = document.getElementById("aboutMenu");
+            const arrow = document.getElementById("aboutArrow");
+
+            dropdownToggle.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropdownMenu.classList.toggle("show");
+                arrow.classList.toggle("rotate");
+            });
+
+            // CLOSE DROPDOWN ON OUTSIDE CLICK
+            document.addEventListener("click", () => {
+                dropdownMenu.classList.remove("show");
+                arrow.classList.remove("rotate");
+            });
+
+            // FORM SUBMISSION
+            document.getElementById("contactForm").addEventListener("submit", (e) => {
+                e.preventDefault();
+                alert("Thank you! Your message has been sent.");
+                e.target.reset();
+            });
+
+            // NAVBAR SCROLL EFFECT
+            window.addEventListener("scroll", () => {
+                const navbar = document.querySelector(".navbar");
+                if (window.scrollY > 100) {
+                    navbar.style.background = "rgba(255,255,255,0.98)";
+                    navbar.style.backdropFilter = "blur(10px)";
+                } else {
+                    navbar.style.background = "#fff";
+                    navbar.style.backdropFilter = "none";
+                }
+            });
+
+            // SMOOTH SCROLLING
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute("href"));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

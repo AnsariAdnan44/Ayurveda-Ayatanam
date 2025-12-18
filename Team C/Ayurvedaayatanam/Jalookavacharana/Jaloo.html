@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="../../styles/Panchkarma.css" />
+        <style>
+            /* NAVBAR - FIXED */
+            .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1rem 0;
+                background: #fff;
+                border-bottom: 1px solid #eee;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .logo img {
+                width: 70px;
+                animation: spin 20s linear infinite;
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .menu {
+                display: flex;
+                gap: 2rem;
+                list-style: none;
+            }
+
+            .menu a {
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                font-size: 1rem;
+                position: relative;
+                transition: color 0.3s;
+            }
+
+            .menu a:hover,
+            .menu a.active {
+                color: #e74c3c;
+            }
+
+            .menu a.active::after {
+                content: "";
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: #e74c3c;
+            }
+
+            .right {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .right a {
+                color: #333;
+                font-size: 1.2rem;
+                transition: color 0.3s;
+            }
+
+            .right a:hover {
+                color: #e74c3c;
+            }
+
+            .cta {
+                padding: 0.6rem 1.5rem;
+                border-radius: 25px;
+                border: none;
+                background: #000;
+                color: #fff;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+
+            .cta:hover {
+                background: #333;
+                transform: translateY(-2px);
+            }
+
+            /* DROPDOWN - FIXED */
+            .dropdown {
+                position: relative;
+            }
+
+            .dropdown-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: #fff;
+                min-width: 220px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                border-radius: 8px;
+                z-index: 1001;
+            }
+
+            .dropdown-menu.show {
+                display: block;
+            }
+
+            .dropdown-menu a {
+                display: block;
+                padding: 0.8rem 1.2rem;
+                color: #333;
+                font-weight: 500;
+            }
+
+            .dropdown-menu a:hover {
+                background: #f8f9fa;
+            }
+
+            .arrow {
+                font-size: 0.8rem;
+                transition: transform 0.3s;
+                margin-left: 0.3rem;
+            }
+
+            .arrow.rotate {
+                transform: rotate(180deg);
+            }
+
+            /* MOBILE MENU */
+            .menu-toggle {
+                display: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: #333;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                object-fit: cover;
+                display: block;
+            }
+        </style>
+        <style>
+            /* NAVBAR - FIXED */
+            .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1rem 5%;
+                background: #fff;
+                border-bottom: 1px solid #eee;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .logo img {
+                width: 120px;
+                animation: spin 20s linear infinite;
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .menu {
+                display: flex;
+                gap: 2rem;
+                list-style: none;
+            }
+
+            .menu a {
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                font-size: 1rem;
+                position: relative;
+                transition: color 0.3s;
+            }
+
+            .menu a:hover,
+            .menu a.active {
+                color: #e74c3c;
+            }
+
+            .menu a.active::after {
+                content: "";
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: #e74c3c;
+            }
+
+            .right {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .right a {
+                color: #333;
+                font-size: 1.2rem;
+                transition: color 0.3s;
+            }
+
+            .right a:hover {
+                color: #e74c3c;
+            }
+
+            .cta {
+                padding: 0.6rem 1.5rem;
+                border-radius: 25px;
+                border: none;
+                background: #000;
+                color: #fff;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+
+            .cta:hover {
+                background: #333;
+                transform: translateY(-2px);
+            }
+
+            /* DROPDOWN - FIXED */
+            .dropdown {
+                position: relative;
+            }
+
+            .dropdown-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: #fff;
+                min-width: 220px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                border-radius: 8px;
+                z-index: 1001;
+            }
+
+            .dropdown-menu.show {
+                display: block;
+            }
+
+            .dropdown-menu a {
+                display: block;
+                padding: 0.8rem 1.2rem;
+                color: #333;
+                font-weight: 500;
+            }
+
+            .dropdown-menu a:hover {
+                background: #f8f9fa;
+            }
+
+            .arrow {
+                font-size: 0.8rem;
+                transition: transform 0.3s;
+                margin-left: 0.3rem;
+            }
+
+            .arrow.rotate {
+                transform: rotate(180deg);
+            }
+
+            /* MOBILE MENU */
+            .menu-toggle {
+                display: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: #333;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                object-fit: cover;
+                display: block;
+            }
+
+            @media (max-width: 768px) {
+                .menu-toggle {
+                    display: block;
+                }
+
+                .menu {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    width: 100%;
+                    background: #fff;
+                    flex-direction: column;
+                    padding: 1rem;
+                    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                }
+
+                .menu.active {
+                    display: flex;
+                }
+
+                .navbar {
+                    padding: 1rem 5%;
+                }
+
+                .right {
+                    gap: 0.5rem;
+                }
+
+                .services .row {
+                    --bs-gutter-x: 1rem;
+                }
+            }
+
+            @media (max-width: 576px) {
+                .navbar {
+                    padding: 0.8rem 4%;
+                }
+
+                .logo img {
+                    width: 100px;
+                }
+
+                .services {
+                    padding: 60px 4%;
+                }
+            }
+        </style>
+        <title>Jaloukavacharana - The Leech Therapy</title>
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <header class="navbar">
+            <div class="logo">
+                <img src="/images/logo img.avif" alt="Ayurveda Ayatanam Logo" />
+            </div>
+
+            <div class="menu-toggle" id="menuToggle">☰</div>
+
+            <nav class="menu" id="navMenu">
+                <a href="../../../index.html">Home</a>
+                <a href="../Daivapipashaya Chikitsa/Diva.html">Daivavyapashraya Chikitsa</a>
+                <a href="../../html/Panchkarma.html">Panchakarma</a>
+                <a href="../../html/jyotisha-diagnosis.html">Hora Ayurveda</a>
+                <a href="../Jalookavacharana/Jaloo.html" class="active">Jaloukavacharana</a>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        About Us
+                        <span class="arrow" id="aboutArrow">▼</span>
+                    </a>
+                    <div class="dropdown-menu" id="aboutMenu">
+                        <a href="../../../Team D/about-dr-tejas-bharadwaj.html">Dr. Tejas Bharadwaj</a>
+                        <a href="../../../Team D/about-ayurveda-ayatanam.html">Ayurveda Ayatanam</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="right">
+                <a href="https://www.facebook.com/" target="_blank">
+                    <i class="bi bi-facebook"></i>
+                </a>
+
+                <a href="https://www.instagram.com/" target="_blank">
+                    <i class="bi bi-instagram"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/" target="_blank">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+
+                <a href="https://twitter.com/" target="_blank">
+                    <i class="bi bi-twitter-x"></i>
+                </a>
+                <button class="cta">Consult Now</button>
+            </div>
+        </header>
+
+        <div class="nav-dots">
+            <div class="dot active" data-section="0"></div>
+            <div class="dot" data-section="1"></div>
+            <div class="dot" data-section="2"></div>
+            <div class="dot" data-section="3"></div>
+            <div class="dot" data-section="4"></div>
+        </div>
+
+        <section class="section section-1" id="section1">
+            <div class="bg-image"></div>
+            <div class="overlay"></div>
+
+            <div class="content-box">
+                <h1 class="title">Jaloukavacharana</h1>
+                <p class="subtitle">The Leech Therapy<br />By: Dr. Tejas Bharadwaj B.A</p>
+            </div>
+
+            <div class="scroll-indicator" id="scrollIndicator">
+                Scroll to explore
+                <div class="arrow">↓</div>
+            </div>
+        </section>
+
+        <section class="section section-2" id="section2">
+            <div class="bg-image"></div>
+            <div class="overlay"></div>
+
+            <div class="content-box">
+                <h2 class="title">Jaloukavacharana - The Leech Therapy</h2>
+
+                <div class="text-content">
+                    <p>
+                        Jaloukavacharana, or leech therapy, is one of the methods of Raktamokshana (bloodletting)
+                        mentioned in Ayurveda Shastra. It is a highly effective and gentle form of treatment, used
+                        especially for patients who require a delicate approach. The term 'Jalouka' is derived from the
+                        Sanskrit words:
+                    </p>
+                </div>
+
+                <div class="shloka">
+                    <h3>Nirukti / Etymology of Jalouka</h3>
+                    <p class="text-content text-center">
+                        That means, for whom water (Jala) itself is the abode or home is known as Jalouka (leech).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-3" id="section3">
+            <div class="section-3-overlay"></div>
+
+            <div class="section-3-content">
+                <h2 class="section-title-white">Indications for Jaloukavacharana</h2>
+
+                <div class="text-content text-center">
+                    <p style="color: white; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5)">
+                        Leech therapy is particularly beneficial for:
+                    </p>
+                </div>
+
+                <ul class="indications-list">
+                    <li><strong>Nrupa (Kings)</strong></li>
+                    <li><strong>Aadya (Wealthy Persons)</strong></li>
+                    <li><strong>Baha (Children)</strong></li>
+                    <li><strong>Sihavira (Elderly People)</strong></li>
+                    <li><strong>Bheen (Timid People)</strong></li>
+                    <li><strong>Durbala (Weak Individuals)</strong></li>
+                    <li><strong>Naari (Women)</strong></li>
+                    <li><strong>Sukumara (Delicate and Sensitive Persons)</strong></li>
+                </ul>
+
+                <div class="text-content text-center">
+                    <p style="color: white; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); margin-top: 30px">
+                        It is considered an ideal treatment for those who cannot tolerate more invasive bloodletting
+                        procedures due to its gentle and controlled approach.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-4" id="section4">
+            <div class="text-content-container">
+                <h2 class="section-title">Reference in the Mahabharata</h2>
+
+                <div class="text-content">
+                    <p>
+                        In the Mahabharata, the following shloka offers a profound analogy between human behavior and
+                        the nature of leeches:
+                    </p>
+                </div>
+
+                <div class="shloka" style="background: rgba(44, 85, 48, 0.1)">
+                    <h3>Shloka:</h3>
+                    <p class="shloka-text">
+                        जलं मृग्युवनं यद्वा अन्तरम्<br />
+                        अज्ञानाद् यथा बिन्दुं विक्षिप्य अज्ञः<br />
+                        अलक्ष्यं तत् प्रविशन्ति बाला गोपालकाः<br />
+                        अलज्जा वै श्रेष्ठा अन्तः सा लज्जा
+                    </p>
+                </div>
+
+                <div class="text-content">
+                    <h3>Translation and Explanation:</h3>
+                    <p>
+                        "A righteous person accepts the virtues of others, not their faults, while those who are flawed
+                        themselves focus on others' shortcomings and ignore their virtues. Just as a child drinks milk
+                        and leaves the blood behind, wise individuals choose virtues over flaws, unlike leeches that
+                        drink only blood, ignoring water."
+                    </p>
+                    <p>
+                        This shloka critiques individuals who fail to distinguish between good and bad qualities,
+                        drawing a metaphor to the nature of leeches, which feed only on blood.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-5" id="section5">
+            <div class="text-content-container">
+                <div class="shloka" style="background: rgba(212, 165, 116, 0.1)">
+                    <h3>Sloka:</h3>
+                    <p class="shloka-text">
+                        στα υπαιτιάσας στους τυπάς κινητής για τα συντασιακού σύστημα της ζωής. Στις 1,000 χρήσεις που
+                        αναφέρουν την πλήρη διάθεση των εργασιών είναι το άδρο του προϋπολογισμού.
+                    </p>
+                    <p class="shloka-text">
+                        Στο έτος 2,000 χρήσεων αυτόνονται από τον οικονομικό όλλο του προϋπολογισμού.
+                    </p>
+                </div>
+
+                <div class="text-content">
+                    <h3 class="section-title" style="margin-top: 50px">Conclusion</h3>
+                    <p>
+                        Jaloukavacharana, an ancient Ayurvedic bloodletting therapy using leeches, remains a gentle,
+                        effective, and highly controlled treatment for a variety of conditions.
+                    </p>
+                    <p>
+                        Its deep roots in Ayurveda, reinforced by its extensive mention in classical texts, make it an
+                        essential part of Ayurvedic therapeutic practices at Ayurveda Ayatanam.
+                    </p>
+                    <p>
+                        The therapy's unique mechanism combines mechanical decongestion with biochemical intervention
+                        through the introduction of over 100 bioactive compounds present in leech saliva. These include
+                        hirudin (a potent anticoagulant), hyaluronidase (a spreading factor), anesthetic compounds,
+                        anti-inflammatory agents, and various enzymes that collectively promote healing and tissue
+                        regeneration.
+                    </p>
+                    <p>
+                        Modern research continues to validate many of the traditional claims about leech therapy,
+                        particularly in the fields of plastic surgery, dermatology, and pain management. The therapy's
+                        gentle nature makes it suitable for patients across all age groups and constitutional types,
+                        from children to the elderly, and from delicate individuals to those with robust constitutions.
+                    </p>
+                    <p>
+                        As integrative medicine continues to evolve, Jaloukavacharana stands as a testament to the
+                        enduring wisdom of Ayurveda, offering a bridge between ancient healing traditions and
+                        contemporary medical science. Its continued practice and study ensure that this valuable
+                        therapeutic modality will remain available to future generations seeking holistic, natural
+                        approaches to health and healing.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <footer id="footer">
+            <div class="footer-content">
+                <h3 class="footer-title">Ayurveda Ayatanam</h3>
+                <p class="footer-text">Preserving and Practicing Traditional Ayurvedic Therapies</p>
+                <p class="footer-text">Jaloukavacharana Research & Clinical Application Center</p>
+
+                <div class="copyright">
+                    <p>
+                        © 2023 Ayurveda Ayatanam. All content based on classical Ayurvedic texts and contemporary
+                        research.
+                    </p>
+                    <p>
+                        This information is for educational purposes only. Consult a qualified Ayurvedic practitioner
+                        for treatment.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="./script.js"></script>
+        <script src="../../scripts/Panchkarma.js"></script>
+        <script>
+            // MOBILE MENU TOGGLE
+            const menuToggle = document.getElementById("menuToggle");
+            const navMenu = document.getElementById("navMenu");
+
+            menuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+            });
+
+            // DROPDOWN TOGGLE
+            const dropdownToggle = document.querySelector(".dropdown-toggle");
+            const dropdownMenu = document.getElementById("aboutMenu");
+            const arrow = document.getElementById("aboutArrow");
+
+            dropdownToggle.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropdownMenu.classList.toggle("show");
+                arrow.classList.toggle("rotate");
+            });
+
+            // CLOSE DROPDOWN ON OUTSIDE CLICK
+            document.addEventListener("click", () => {
+                dropdownMenu.classList.remove("show");
+                arrow.classList.remove("rotate");
+            });
+
+            // FORM SUBMISSION
+            document.getElementById("contactForm").addEventListener("submit", (e) => {
+                e.preventDefault();
+                alert("Thank you! Your message has been sent.");
+                e.target.reset();
+            });
+
+            // NAVBAR SCROLL EFFECT
+            window.addEventListener("scroll", () => {
+                const navbar = document.querySelector(".navbar");
+                if (window.scrollY > 100) {
+                    navbar.style.background = "rgba(255,255,255,0.98)";
+                    navbar.style.backdropFilter = "blur(10px)";
+                } else {
+                    navbar.style.background = "#fff";
+                    navbar.style.backdropFilter = "none";
+                }
+            });
+
+            // SMOOTH SCROLLING
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute("href"));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
