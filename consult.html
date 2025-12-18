@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consult Now | Ayurveda Ayatanam</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #f6fdf9;
+      color: #2f3e46;
+      line-height: 1.6;
+    }
+
+    /* ---------------- HEADER ---------------- */
+    .consult-header {
+      background: linear-gradient(135deg, #7ddf9b, #b6f2d6);
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    .consult-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .consult-header p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.05rem;
+      opacity: 0.9;
+    }
+
+    /* ---------------- LAYOUT ---------------- */
+    .consult-container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+    }
+
+    /* ---------------- INFO CARD ---------------- */
+    .consult-info {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .consult-info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #1b4332;
+    }
+
+    .consult-info p {
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+
+    .consult-info ul {
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+
+    .consult-info ul li {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    /* ---------------- FORM CARD ---------------- */
+    .consult-form {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .consult-form h3 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      color: #1b4332;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, select, textarea {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #cdeee0;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    textarea {
+      resize: none;
+      min-height: 120px;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #52b788;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 14px;
+      background: #2d6a4f;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #1b4332;
+    }
+
+    /* ---------------- CONTACT STRIP ---------------- */
+    .contact-strip {
+      margin-top: 70px;
+      background: #e9fdf3;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .contact-strip h4 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .contact-strip p {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width: 900px) {
+      .consult-container {
+        grid-template-columns: 1fr;
+      }
+
+      .consult-header h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .consult-header {
+        padding: 50px 15px;
+      }
+
+      .consult-header h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <section class="consult-header">
+    <h1>Consult with Our Ayurvedic Experts</h1>
+    <p>Get personalized Ayurvedic guidance for your health concerns through online or in‑person consultation.</p>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="consult-container">
+
+    <!-- LEFT INFO -->
+    <div class="consult-info">
+      <h2>Why Choose Ayurveda Consultation?</h2>
+      <p>Ayurveda focuses on identifying the root cause of health issues and restoring balance through natural therapies, diet, and lifestyle changes.</p>
+
+      <ul>
+        <li>✔ Personalized Prakriti & Dosha analysis</li>
+        <li>✔ Natural and holistic treatment approach</li>
+        <li>✔ Diet & lifestyle recommendations</li>
+        <li>✔ Online & clinic consultations available</li>
+      </ul>
+
+      <p>Our experienced Vaidyas guide you step‑by‑step towards long‑term wellness.</p>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="consult-form">
+      <h3>Book a Consultation</h3>
+
+      <form>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="tel" placeholder="Phone Number" required>
+
+        <select required>
+          <option value="">Select Consultation Type</option>
+          <option>Online Consultation</option>
+          <option>Clinic Visit</option>
+        </select>
+
+        <textarea placeholder="Describe your health concern"></textarea>
+
+        <button type="submit">Consult Now</button>
+      </form>
+    </div>
+
+  </section>
+
+  <!-- CONTACT STRIP -->
+  <section class="contact-strip">
+    <h4>Need Immediate Help?</h4>
+    <p>📞 Call us: +91 XXXXXXXXXX</p>
+    <p>📧 Email: info@ayurvedaayatanam.com</p>
+  </section>
+
+</body>
+</html>
